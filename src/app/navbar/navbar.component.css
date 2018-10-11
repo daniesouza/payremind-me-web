@@ -1,0 +1,62 @@
+.navbar {
+  padding: 10px 0;
+  background-color: #1e94d2;
+}
+
+.navbar-toggle {
+  color: white;
+}
+
+.navbar-menu {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 290px;
+  margin: 0;
+  z-index: 9999;
+  list-style: none;
+  background-color: #3a3633;
+  padding: 0;
+}
+
+.navbar-fechar {
+  text-align: left;
+  margin-bottom: 5px;
+  margin-left: 10px;
+  border-bottom: 0 solid #525251;
+  padding: 10px;
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.navbar-fechar a{
+  color: #c0bbb7;
+}
+
+.navbar-fechar a:hover{
+  color: white;
+}
+
+.navbar-usuario {
+  margin-bottom: 15px;
+  border-bottom: 2px solid #525251;
+  padding: 15px;
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.navbar-menuitem{
+  padding: 15px;
+}
+
+.navbar-menuitem a{
+  color: #c0bbb7;
+  text-decoration: none;
+}
+
+.navbar-menuitem a:hover{
+  color: white;
+}
