@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-lancamentos-novo',
-  templateUrl: './lancamentos-novo.component.html',
-  styleUrls: ['./lancamentos-novo.component.css']
+  selector: 'app-pessoas-novo',
+  templateUrl: './pessoas-novo.component.html',
+  styleUrls: ['./pessoas-novo.component.css']
 })
-export class LancamentosNovoComponent implements OnInit {
+export class PessoasNovoComponent implements OnInit {
 
   tipos = [
     {label: 'Receita', value: 'RECEITA'},
@@ -23,7 +23,6 @@ export class LancamentosNovoComponent implements OnInit {
     {label: 'Sebastiao de souza', value: 2},
     {label: 'Daniel souza', value: 3}
   ];
-
 
   constructor() { }
 

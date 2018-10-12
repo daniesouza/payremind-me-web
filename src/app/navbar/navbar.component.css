@@ -11,7 +11,7 @@
   position: fixed;
   top: 0;
   bottom: 0;
-  right: 0;
+  left: 0;
   width: 290px;
   margin: 0;
   z-index: 9999;
@@ -21,7 +21,7 @@
 }
 
 .navbar-fechar {
-  text-align: left;
+  text-align: right;
   margin-bottom: 5px;
   margin-left: 10px;
   border-bottom: 0 solid #525251;

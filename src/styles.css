@@ -13,6 +13,10 @@ label {
   font-weight: bold;
 }
 
+a{
+  color: #337ab7;
+}
+
 @media(min-width: 1200px){
 
   .container{
@@ -32,7 +36,63 @@ label {
 }
 
 .col-button{
-  width: 90px;
+  width: 95px;
   text-align: center;
 }
+
+.ui-messages.ui-messages-success,.ui-message.ui-message-success {
+  background-color: #b7d8b7;
+  border: 0 none;
+  color: #212121;
+  margin-top: 4px;
+}
+
+.ui-message.ui-message-info {
+  background-color: #7fbcec;
+  border: 0 none;
+  color: #212121;
+  margin-top: 4px;
+}
+
+.ui-message.ui-message-warn {
+  background-color: #ffe399;
+  border: 0 none;
+  color: #212121;
+  margin-top: 4px;
+}
+
+.ui-message.ui-message-error  {
+  background-color: #f44336;
+  border: 0 none;
+  color: white;
+  font-weight: bold;
+  margin-top: 4px;
+}
+
+.ui-message.ui-message-success {
+  background-color: #b7d8b7;
+  border: 0 none;
+  color: #212121;
+}
+
+.ui-messages.ui-messages-info {
+  background-color: #7fbcec;
+  border: 0 none;
+  color: #212121;
+}
+
+.ui-messages.ui-messages-warn {
+  background-color: #ffe399;
+  border: 0 none;
+  color: #212121;
+}
+
+.ui-messages.ui-messages-error  {
+  background-color: #f44336;
+  border: 0 none;
+  color: white;
+  font-weight: bold;
+}
+
+
 

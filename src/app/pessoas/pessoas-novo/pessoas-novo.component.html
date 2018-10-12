@@ -1,0 +1,73 @@
+<div class="container">
+
+  <form>
+
+    <div class="ui-g">
+
+      <div class="ui-g-12">
+        <h1>Nova Pessoa</h1>
+      </div>
+
+      <div class="ui-g-12 ui-md-12 ui-fluid">
+        <label>Nome</label>
+        <input pInputText type="text" name="pessoa" ngModel #pessoa="ngModel" required minlength="5">
+        <p-message severity="error" text="Informe a pessoa"  *ngIf="pessoa.hasError('required') && pessoa.dirty"></p-message>
+        <p-message severity="error" text=" Minimo de 5 caracteres"  *ngIf="pessoa.hasError('minlength') && pessoa.dirty"></p-message>
+      </div>
+
+      <div class="ui-g-12 ui-md-9 ui-fluid">
+        <label>Logradouro</label>
+        <input pInputText type="text" name="logradouro" ngModel #logradouro="ngModel" required minlength="5">
+        <p-message severity="error" text="Informe o logradouro"  *ngIf="logradouro.hasError('required') && logradouro.dirty"></p-message>
+        <p-message severity="error" text=" Minimo de 5 caracteres"  *ngIf="logradouro.hasError('minlength') && logradouro.dirty"></p-message>
+      </div>
+
+      <div class="ui-g-12 ui-md-3 ui-fluid">
+        <label>Número</label>
+        <input pInputText type="text" name="numero" ngModel #numero="ngModel" required minlength="1">
+        <p-message severity="error" text="Informe o número"  *ngIf="numero.hasError('required') && numero.dirty"></p-message>
+        <p-message severity="error" text=" Minimo de 1 caracter"  *ngIf="numero.hasError('minlength') && numero.dirty"></p-message>
+      </div>
+
+      <div class="ui-g-12 ui-md-4 ui-fluid">
+        <label>Complemento</label>
+        <input pInputText type="text">
+      </div>
+
+      <div class="ui-g-12 ui-md-4 ui-fluid">
+        <label>Bairro</label>
+        <input pInputText type="text" name="bairro" ngModel #bairro="ngModel" required minlength="5">
+        <p-message severity="error" text="Informe o bairro"  *ngIf="bairro.hasError('required') && bairro.dirty"></p-message>
+        <p-message severity="error" text=" Minimo de 5 caracteres"  *ngIf="bairro.hasError('minlength') && bairro.dirty"></p-message>
+      </div>
+
+      <div class="ui-g-12 ui-md-4 ui-fluid">
+        <label>CEP</label>
+        <p-inputMask  mask="99999-999" name="cep" ngModel #cep="ngModel" required></p-inputMask>
+        <p-message severity="error" text="Informe o CEP"  *ngIf="cep.hasError('required') && cep.dirty"></p-message>
+      </div>
+
+      <div class="ui-g-12 ui-md-6 ui-fluid">
+        <label>Cidade</label>
+        <input pInputText type="text" name="cidade" ngModel #cidade="ngModel" required minlength="5">
+        <p-message severity="error" text="Informe a cidade"  *ngIf="cidade.hasError('required') && cidade.dirty"></p-message>
+        <p-message severity="error" text=" Minimo de 5 caracteres"  *ngIf="cidade.hasError('minlength') && cidade.dirty"></p-message>
+      </div>
+
+      <div class="ui-g-12 ui-md-6 ui-fluid">
+        <label>Estado</label>
+        <input pInputText type="text" name="estado" ngModel #estado="ngModel" required minlength="5">
+        <p-message severity="error" text="Informe o estado"  *ngIf="estado.hasError('required') && estado.dirty"></p-message>
+        <p-message severity="error" text=" Minimo de 5 caracteres"  *ngIf="estado.hasError('minlength') && estado.dirty"></p-message>
+      </div>
+
+      <div class="ui-g-12">
+        <button pButton type="submit" label="Salvar"></button>
+        <button pButton type="submit" label="Novo" class="ui-button-info"></button>
+        <a href="javascript:">Voltar para a pesquisa</a>
+      </div>
+
+    </div>
+
+  </form>
+</div>
