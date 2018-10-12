@@ -39,13 +39,13 @@
             <tr>
               <td>{{lancamento.pessoa}}</td>
               <td>{{lancamento.descricao}}</td>
-              <td class="col-data">{{lancamento.dataVencimento}}</td>
-              <td class="col-data">{{lancamento.dataPagamento}}</td>
+              <td class="col-data">{{lancamento.dataVencimento  | date:'dd/MM/yyyy' }}</td>
+              <td class="col-data">{{lancamento.dataPagamento | date:'dd/MM/yyyy' }}</td>
               <td class="col-valor" [style.color]="lancamento.tipo === 'DESPESA' ? 'red' : 'blue'">
-                {{lancamento.valor}}
+                {{lancamento.valor | currency:'BRL':true:'1.2-2'  }}
               </td>
               <td>
-                <button pButton icon="pi pi-pencil" style="margin-right: 5px" pTooltip="Editar"
+                <button pButton icon="pi pi-pencil" pTooltip="Editar"
                         tooltipPosition="top"></button>
                 <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top"></button>
               </td>
