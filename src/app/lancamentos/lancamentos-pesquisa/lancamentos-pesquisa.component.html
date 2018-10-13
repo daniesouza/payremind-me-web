@@ -1,31 +1,75 @@
-<div class="container">
-  <div class="ui-g">
-
-    <div class="ui-g-12">
-      <h1>Lançamentos</h1>
-    </div>
-
-    <div class="ui-g-12 ui-fluid">
-      <label>Descrição</label>
-      <input type="text" pInputText>
-    </div>
-
-    <div class="ui-g-12">
-      <label style="display: block;">Vencimento</label>
-      <input pInputText type="text" style="width: 95px">
-
-      <label>até</label>
-      <input pInputText type="text" style="width: 95px">
-    </div>
-
-    <div class="ui-g-12">
-      <button pButton type="submit" label="Pesquisar"></button>
-    </div>
-
+<form (ngSubmit)="pesquisar()">
+  <div class="container">
     <div class="ui-g">
+
       <div class="ui-g-12">
-        <app-lancamentos-grid [lancamentos]="lancamentos"></app-lancamentos-grid>
+        <h1>Lançamentos</h1>
+      </div>
+
+      <div class="ui-g-12 ui-fluid">
+        <label>Descrição</label>
+        <input type="text" pInputText name="descricao" [(ngModel)]="filtro.descricao">
+      </div>
+
+      <div class="ui-g-12">
+        <label style="display: block;">Vencimento</label>
+        <p-calendar dateFormat="dd/mm/yy" [readonlyInput]="false" [inline]="false" [showIcon]="false"
+                    name="vencimento" [(ngModel)]="filtro.dataVencimentoDe" [inputStyle]="{ width:'95px'}"
+        ></p-calendar>
+
+        <label>até</label>
+        <p-calendar dateFormat="dd/mm/yy" [readonlyInput]="false" [inline]="false" [showIcon]="false"
+                    name="vencimento" [(ngModel)]="filtro.dataVencimentoAte" [inputStyle]="{ width:'95px'}"
+        ></p-calendar>
+      </div>
+
+      <div class="ui-g-12">
+        <button pButton type="submit" label="Pesquisar"></button>
+      </div>
+
+      <div class="ui-g">
+        <div class="ui-g-12">
+          <p-table [value]="lancamentos"
+                   [paginator]="true"
+                   [rows]="filtro.size"
+                   [responsive]="true"
+                   [lazy]="true"
+                   [totalRecords]="totalRecords"
+                   (onLazyLoad)="onChangePage($event)">
+
+            <ng-template pTemplate="header">
+              <tr>
+                <th>Pessoa</th>
+                <th>Descrição</th>
+                <th>Vencimento</th>
+                <th>Pagamento</th>
+                <th>Valor</th>
+                <th class="col-button"></th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-lancamento>
+              <tr>
+                <td>{{lancamento.pessoa}}</td>
+                <td>{{lancamento.descricao}}</td>
+                <td class="col-data">{{lancamento.dataVencimento | date:'dd/MM/yyyy' }}</td>
+                <td class="col-data">{{lancamento.dataPagamento | date:'dd/MM/yyyy' }}</td>
+                <td class="col-valor" [style.color]="lancamento.tipo === 'DESPESA' ? 'red' : 'blue'">
+                  {{lancamento.valor | currency:'BRL':'R$':'1.2-2' }}
+                </td>
+                <td>
+                  <button pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"></button>
+                  <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top"></button>
+                </td>
+              </tr>
+            </ng-template>
+          </p-table>
+
+          <div *ngIf="lancamentos.length==0">
+            No values to display here
+          </div>
+
+        </div>
       </div>
     </div>
   </div>
-</div>
+</form>
