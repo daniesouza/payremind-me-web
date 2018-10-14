@@ -1,6 +1,8 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {HttpClientModule} from '@angular/common/http';
 
 
 import {InputTextModule} from 'primeng/inputtext';
@@ -13,17 +15,20 @@ import {SelectButtonModule} from 'primeng/selectbutton';
 import {DropdownModule} from 'primeng/dropdown';
 import {MessagesModule} from 'primeng/messages';
 import {MessageModule} from 'primeng/message';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
+
 import {CurrencyMaskModule} from 'ng2-currency-mask';
 
 import {LancamentosPesquisaComponent} from './lancamentos-pesquisa/lancamentos-pesquisa.component';
 import {LancamentosNovoComponent} from './lancamentos-novo/lancamentos-novo.component';
-import {HttpClientModule} from '@angular/common/http';
+
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
 
     InputTextModule,
     ButtonModule,
@@ -31,13 +36,13 @@ import {HttpClientModule} from '@angular/common/http';
     TooltipModule,
     InputTextareaModule,
     CalendarModule,
-    BrowserAnimationsModule,
     SelectButtonModule,
     DropdownModule,
     CurrencyMaskModule,
     MessageModule,
     MessagesModule,
-    HttpClientModule
+
+
   ],
   declarations: [
     LancamentosPesquisaComponent,
@@ -47,6 +52,7 @@ import {HttpClientModule} from '@angular/common/http';
     LancamentosPesquisaComponent,
     LancamentosNovoComponent
   ],
+  providers: []
 })
 export class LancamentosModule {
 }

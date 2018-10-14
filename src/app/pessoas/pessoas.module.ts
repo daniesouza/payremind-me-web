@@ -1,6 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
 
 import {InputTextModule} from 'primeng/inputtext';
 import {InputTextareaModule} from 'primeng/inputtextarea';
@@ -18,13 +19,13 @@ import {InputMaskModule} from 'primeng/inputmask';
 
 import {PessoasPesquisaComponent} from './pessoas-pesquisa/pessoas-pesquisa.component';
 import {PessoasNovoComponent} from './pessoas-novo/pessoas-novo.component';
-import {PessoasGridComponent} from './pessoas-grid/pessoas-grid.component';
 
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
+    HttpClientModule,
 
     InputTextModule,
     ButtonModule,
@@ -38,12 +39,11 @@ import {PessoasGridComponent} from './pessoas-grid/pessoas-grid.component';
     CurrencyMaskModule,
     MessageModule,
     MessagesModule,
-    InputMaskModule
+    InputMaskModule,
   ],
   declarations: [
     PessoasPesquisaComponent,
     PessoasNovoComponent,
-    PessoasGridComponent
   ],
   exports: [
     PessoasPesquisaComponent,

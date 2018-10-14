@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {LancamentoFiltro, LancamentoService} from '../lancamento.service';
-import {LazyLoadEvent} from 'primeng/api';
+import {ConfirmationService, LazyLoadEvent, MessageService} from 'primeng/api';
 
 @Component({
   selector: 'app-lancamentos-pesquisa',
@@ -9,12 +9,15 @@ import {LazyLoadEvent} from 'primeng/api';
 })
 export class LancamentosPesquisaComponent implements OnInit {
 
-  constructor(private lancamentoService: LancamentoService) {
+  constructor(private messageService: MessageService,
+              private confirmationService: ConfirmationService,
+              private lancamentoService: LancamentoService) {
   }
 
   lancamentos = [];
   filtro = new LancamentoFiltro();
   totalRecords = 0;
+  @ViewChild('tabela') tabela;
 
   ngOnInit(): void {
     this.pesquisar();
@@ -33,5 +36,27 @@ export class LancamentosPesquisaComponent implements OnInit {
   onChangePage(event: LazyLoadEvent) {
     const actualPage = event.first / event.rows;
     this.pesquisar(actualPage);
+  }
+
+  excluir(lancamento: any) {
+    this.confirmationService.confirm({
+      message: 'Deseja realmente deletar este lançamento?',
+      accept: () => {
+        this.lancamentoService.excluir(lancamento.codigo)
+          .then(() => {
+            if (this.tabela.first === 0) {
+              this.pesquisar();
+            } else {
+              this.tabela.first = 0;
+            }
+
+            this.messageService.add({
+              severity: 'success',
+              summary: 'Lançamento excluído com sucesso.',
+              detail: 'Codigo:' + lancamento.codigo
+            });
+          });
+      }
+    });
   }
 }

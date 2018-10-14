@@ -59,4 +59,19 @@ export class LancamentoService {
         return result;
       });
   }
+
+  excluir(codigo: number): Promise<void> {
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg=='
+      }),
+    };
+
+    return this.http.delete(`${this.lancamentosUrl}/${codigo}`, httpOptions)
+      .toPromise()
+      .then(() => null);
+  }
+
 }
