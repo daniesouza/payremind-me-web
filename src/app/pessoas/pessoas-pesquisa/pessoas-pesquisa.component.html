@@ -24,7 +24,8 @@
                    [responsive]="true"
                    [lazy]="true"
                    [totalRecords]="totalRecords"
-                   (onLazyLoad)="onChangePage($event)">
+                   (onLazyLoad)="onChangePage($event)"
+                   #tabela>
             <ng-template pTemplate="header">
               <tr>
                 <th>Nome</th>
@@ -39,11 +40,15 @@
                 <td>{{pessoa.nome}}</td>
                 <td>{{pessoa.endereco.cidade}}</td>
                 <td>{{pessoa.endereco.estado}}</td>
-                <td><a href="#">{{pessoa.ativo === true ? 'Ativo':'Inativo' }}</a></td>
+                <td style="text-align: center">
+                  <p-inputSwitch name="ativo{{pessoa.codigo}}" pTooltip="{{pessoa.ativo === true ? 'Ativo':'Inativo' }}"
+                                 [(ngModel)]="pessoa.ativo" (click)="alterarStatus(pessoa)" ></p-inputSwitch>
+                </td>
+
                 <td>
                   <button pButton icon="pi pi-pencil" pTooltip="Editar"
                           tooltipPosition="top"></button>
-                  <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top"></button>
+                  <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top" (click)="excluir(pessoa)"></button>
                 </td>
               </tr>
             </ng-template>

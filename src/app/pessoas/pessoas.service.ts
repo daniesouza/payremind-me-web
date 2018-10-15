@@ -48,4 +48,31 @@ export class PessoasService {
         return result;
       });
   }
+
+  excluir(codigo: number): Promise<void> {
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg=='
+      }),
+    };
+
+    return this.http.delete(`${this.pessoasURL}/${codigo}`, httpOptions)
+      .toPromise()
+      .then(() => null);
+  }
+
+  alterarStatus(codigo: number, status: boolean): Promise<void> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg=='
+      }),
+    };
+
+    return this.http.put(`${this.pessoasURL}/${codigo}/ativo`, status, httpOptions)
+      .toPromise()
+      .then(() => null);
+  }
 }

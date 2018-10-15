@@ -16,6 +16,7 @@ import {MessageModule} from 'primeng/message';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {CurrencyMaskModule} from 'ng2-currency-mask';
 import {InputMaskModule} from 'primeng/inputmask';
+import {InputSwitchModule} from 'primeng/inputswitch';
 
 import {PessoasPesquisaComponent} from './pessoas-pesquisa/pessoas-pesquisa.component';
 import {PessoasNovoComponent} from './pessoas-novo/pessoas-novo.component';
@@ -40,6 +41,7 @@ import {PessoasNovoComponent} from './pessoas-novo/pessoas-novo.component';
     MessageModule,
     MessagesModule,
     InputMaskModule,
+    InputSwitchModule
   ],
   declarations: [
     PessoasPesquisaComponent,
