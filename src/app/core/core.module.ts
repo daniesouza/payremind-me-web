@@ -7,6 +7,8 @@ import {NavbarComponent} from './navbar/navbar.component';
 import {ToastModule} from 'primeng/toast';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {ConfirmationService, MessageService} from 'primeng/api';
+import {NotFoundComponent} from './not-found.component';
+import {Title} from '@angular/platform-browser';
 
 @NgModule({
   imports: [
@@ -15,7 +17,9 @@ import {ConfirmationService, MessageService} from 'primeng/api';
     ConfirmDialogModule,
     RouterModule
   ],
-  declarations: [NavbarComponent],
+  declarations: [
+    NavbarComponent, NotFoundComponent
+  ],
   exports: [
     NavbarComponent,
     ToastModule,
@@ -24,6 +28,7 @@ import {ConfirmationService, MessageService} from 'primeng/api';
   providers: [
     MessageService,
     ConfirmationService,
+    Title
     // {provide: LOCALE_ID, useValue: 'pt-BR'}
   ],
 })

@@ -16,12 +16,11 @@ import {DropdownModule} from 'primeng/dropdown';
 import {MessagesModule} from 'primeng/messages';
 import {MessageModule} from 'primeng/message';
 
-
 import {CurrencyMaskModule} from 'ng2-currency-mask';
 
 import {LancamentosPesquisaComponent} from './lancamentos-pesquisa/lancamentos-pesquisa.component';
 import {LancamentosNovoComponent} from './lancamentos-novo/lancamentos-novo.component';
-import {RouterModule} from '@angular/router';
+import {LancamentosRoutingModule} from './lancamentos-routing.module';
 
 
 @NgModule({
@@ -30,7 +29,7 @@ import {RouterModule} from '@angular/router';
     FormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    RouterModule,
+    LancamentosRoutingModule,
 
     InputTextModule,
     ButtonModule,
@@ -44,15 +43,12 @@ import {RouterModule} from '@angular/router';
     MessageModule,
     MessagesModule,
 
-
   ],
   declarations: [
     LancamentosPesquisaComponent,
     LancamentosNovoComponent
   ],
   exports: [
-    LancamentosPesquisaComponent,
-    LancamentosNovoComponent
   ],
   providers: []
 })

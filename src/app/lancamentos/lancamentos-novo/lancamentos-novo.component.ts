@@ -7,6 +7,7 @@ import {FormControl} from '@angular/forms';
 import {LancamentoService} from '../lancamento.service';
 import {MessageService} from 'primeng/api';
 import {ActivatedRoute, Router} from '@angular/router';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-lancamentos-novo',
@@ -21,7 +22,8 @@ export class LancamentosNovoComponent implements OnInit {
               private messageService: MessageService,
               private errorHandler: ErrorHandlerService,
               private route: ActivatedRoute,
-              private router: Router) {
+              private router: Router,
+              private title: Title) {
   }
 
   tipos = [
@@ -38,6 +40,8 @@ export class LancamentosNovoComponent implements OnInit {
 
     const codigo = this.route.snapshot.params['codigo'];
 
+    this.title.setTitle('Novo lançamento');
+
     if (codigo) {
       this.buscarLancamento(codigo);
     }
@@ -48,7 +52,10 @@ export class LancamentosNovoComponent implements OnInit {
 
   private buscarLancamento(codigo) {
     this.lancamentoService.buscaPorCodigo(codigo)
-      .then(lancamento => this.lancamento = lancamento)
+      .then(lancamento => {
+        this.lancamento = lancamento;
+        this.atualizarTituloEdicao();
+      })
       .catch(error => this.errorHandler.handle(error));
   }
 
@@ -118,5 +125,9 @@ export class LancamentosNovoComponent implements OnInit {
       this.lancamento = new Lancamento();
     }.bind(this), 1);
     this.router.navigate(['/lancamentos/novo']);
+  }
+
+  atualizarTituloEdicao() {
+    this.title.setTitle('Editar lançamento ' + this.lancamento.descricao);
   }
 }

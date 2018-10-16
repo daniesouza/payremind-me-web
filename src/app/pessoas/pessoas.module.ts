@@ -48,8 +48,6 @@ import {PessoasNovoComponent} from './pessoas-novo/pessoas-novo.component';
     PessoasNovoComponent,
   ],
   exports: [
-    PessoasPesquisaComponent,
-    PessoasNovoComponent,
   ]
 })
 export class PessoasModule { }

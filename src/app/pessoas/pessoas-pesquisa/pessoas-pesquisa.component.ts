@@ -2,6 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {ConfirmationService, LazyLoadEvent, MessageService} from 'primeng/api';
 import {PessoasFiltro, PessoasService} from '../pessoas.service';
 import {ErrorHandlerService} from '../../core/error-handler.service';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-pessoas-pesquisa',
@@ -14,7 +15,8 @@ export class PessoasPesquisaComponent implements OnInit {
   constructor(private messageService: MessageService,
               private confirmationService: ConfirmationService,
               private errorHandler: ErrorHandlerService,
-              private pessoasService: PessoasService) {
+              private pessoasService: PessoasService,
+              private title: Title) {
   }
 
   pessoas = [];
@@ -23,6 +25,7 @@ export class PessoasPesquisaComponent implements OnInit {
   @ViewChild('tabela') tabela;
 
   ngOnInit(): void {
+    this.title.setTitle('Pesquisa de Pessoas');
   }
 
   pesquisar(page = 0) {
