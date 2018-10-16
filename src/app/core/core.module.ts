@@ -1,4 +1,6 @@
 import {NgModule} from '@angular/core';
+import {RouterModule} from '@angular/router';
+
 import {CommonModule} from '@angular/common';
 import {NavbarComponent} from './navbar/navbar.component';
 
@@ -11,6 +13,7 @@ import {ConfirmationService, MessageService} from 'primeng/api';
     CommonModule,
     ToastModule,
     ConfirmDialogModule,
+    RouterModule
   ],
   declarations: [NavbarComponent],
   exports: [

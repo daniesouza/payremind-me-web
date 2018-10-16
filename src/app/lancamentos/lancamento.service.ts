@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
+import {Lancamento} from '../core/model';
 
 
 export class LancamentoFiltro {
@@ -58,6 +59,48 @@ export class LancamentoService {
 
         return result;
       });
+  }
+
+  buscaPorCodigo(codigo: number): Promise<any> {
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg=='
+      })
+    };
+
+    return this.http.get(`${this.lancamentosUrl}/${codigo}`, httpOptions)
+      .toPromise()
+      .then((lancamento: Lancamento) => {
+        lancamento.dataVencimento = lancamento.dataVencimento ? new Date(lancamento.dataVencimento + 'T00:00:00') : null;
+        lancamento.dataPagamento = lancamento.dataPagamento ? new Date(lancamento.dataPagamento + 'T00:00:00') : null;
+        return lancamento;
+      });
+  }
+
+  salvarLancamento(lancamento: Lancamento): Promise<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg=='
+      }),
+    };
+
+    return this.http.post(`${this.lancamentosUrl}`, lancamento, httpOptions)
+      .toPromise();
+  }
+
+  atualizarLancamento(lancamento: Lancamento): Promise<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg=='
+      }),
+    };
+
+    return this.http.put(`${this.lancamentosUrl}/${lancamento.codigo}`, lancamento, httpOptions)
+      .toPromise();
   }
 
   excluir(codigo: number): Promise<void> {

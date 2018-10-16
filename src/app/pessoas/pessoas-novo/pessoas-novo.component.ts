@@ -1,4 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import {FormControl} from '@angular/forms';
+import {Lancamento, Pessoa} from '../../core/model';
+import {CategoriasService} from '../../categorias/categorias.service';
+import {PessoasService} from '../pessoas.service';
+import {LancamentoService} from '../../lancamentos/lancamento.service';
+import {MessageService} from 'primeng/api';
+import {ErrorHandlerService} from '../../core/error-handler.service';
 
 @Component({
   selector: 'app-pessoas-novo',
@@ -7,26 +14,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PessoasNovoComponent implements OnInit {
 
-  tipos = [
-    {label: 'Receita', value: 'RECEITA'},
-    {label: 'Despesa', value: 'DESPESA'}
-  ];
+  pessoa = new Pessoa();
 
-  categorias = [
-    {label: 'Alimentação', value: 1},
-    {label: 'Transporte', value: 2}
-  ];
-
-
-  pessoas = [
-    {label: 'João da silva', value: 1},
-    {label: 'Sebastiao de souza', value: 2},
-    {label: 'Daniel souza', value: 3}
-  ];
-
-  constructor() { }
+  constructor(private pessoaService: PessoasService,
+              private messageService: MessageService,
+              private errorHandler: ErrorHandlerService) {
+  }
 
   ngOnInit() {
   }
 
+  salvar(form: FormControl) {
+    console.log(form);
+    console.log(this.pessoa);
+    this.pessoaService.salvarPessoa(this.pessoa)
+      .then(pessoa => {
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Pessoa adicionada com sucesso.',
+          detail: 'Codigo:' + pessoa.codigo
+        });
+
+        this.pessoa = new Pessoa();
+        form.reset();
+      })
+      .catch(error => this.errorHandler.handle(error));
+  }
 }

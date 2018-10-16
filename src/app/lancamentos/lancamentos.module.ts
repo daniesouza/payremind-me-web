@@ -21,6 +21,7 @@ import {CurrencyMaskModule} from 'ng2-currency-mask';
 
 import {LancamentosPesquisaComponent} from './lancamentos-pesquisa/lancamentos-pesquisa.component';
 import {LancamentosNovoComponent} from './lancamentos-novo/lancamentos-novo.component';
+import {RouterModule} from '@angular/router';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import {LancamentosNovoComponent} from './lancamentos-novo/lancamentos-novo.comp
     FormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    RouterModule,
 
     InputTextModule,
     ButtonModule,

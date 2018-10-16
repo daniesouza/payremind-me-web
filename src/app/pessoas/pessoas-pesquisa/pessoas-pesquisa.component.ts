@@ -23,11 +23,9 @@ export class PessoasPesquisaComponent implements OnInit {
   @ViewChild('tabela') tabela;
 
   ngOnInit(): void {
-    this.pesquisar();
   }
 
   pesquisar(page = 0) {
-
     this.filtro.page = page;
     this.pessoasService.pesquisar(this.filtro)
       .then(resultado => {

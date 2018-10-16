@@ -1,11 +1,8 @@
 <app-navbar></app-navbar>
-<app-lancamentos-pesquisa></app-lancamentos-pesquisa>
-<app-pessoas-pesquisa></app-pessoas-pesquisa>
-<app-lancamentos-novo></app-lancamentos-novo>
-<app-pessoas-novo></app-pessoas-novo>
-
+<router-outlet></router-outlet>
 
 <p-toast [style]="{marginTop: '80px'}" position="bottom-right"></p-toast>
+
 <p-confirmDialog header="Confirmação" icon="pi pi-question-circle" width="425" #cd>
   <p-footer>
     <button type="button" pButton icon="pi pi-times" label="Não" (click)="cd.reject()"></button>

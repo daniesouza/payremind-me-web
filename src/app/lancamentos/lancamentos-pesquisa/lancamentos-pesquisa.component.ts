@@ -22,7 +22,6 @@ export class LancamentosPesquisaComponent implements OnInit {
   @ViewChild('tabela') tabela;
 
   ngOnInit(): void {
-    this.pesquisar();
   }
 
   pesquisar(page = 0) {

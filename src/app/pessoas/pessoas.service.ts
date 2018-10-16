@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
+import {Lancamento, Pessoa} from '../core/model';
 
 
 export class PessoasFiltro {
@@ -47,6 +48,18 @@ export class PessoasService {
 
         return result;
       });
+  }
+
+  salvarPessoa(pessoa: Pessoa): Promise<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg=='
+      }),
+    };
+
+    return this.http.post(`${this.pessoasURL}`, pessoa, httpOptions)
+      .toPromise();
   }
 
   excluir(codigo: number): Promise<void> {
