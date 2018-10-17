@@ -58,8 +58,10 @@
                   {{lancamento.valor | currency:'BRL':'R$':'1.2-2' }}
                 </td>
                 <td>
-                  <button pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top" [routerLink]="['/lancamentos', lancamento.codigo]"></button>
-                  <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top" (click)="excluir(lancamento)"></button>
+                  <button pButton [disabled]="!authService.temPermissao('ROLE_CADASTRAR_LANCAMENTO')"
+                          icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top" [routerLink]="['/lancamentos', lancamento.codigo]"></button>
+                  <button pButton [disabled]="!authService.temPermissao('ROLE_REMOVER_LANCAMENTO')"
+                          icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top" (click)="excluir(lancamento)"></button>
                 </td>
               </tr>
             </ng-template>
@@ -71,7 +73,7 @@
         </div>
       </div>
       <div class="ui-g-12">
-        <a pButton label="Novo" routerLink="/lancamentos/novo"></a>
+        <button pButton [disabled]="!authService.temPermissao('ROLE_CADASTRAR_LANCAMENTO')" label="Novo" routerLink="/lancamentos/novo"></button>
       </div>
     </div>
   </div>

@@ -13,15 +13,7 @@ export class CategoriasService {
   }
 
   pesquisar(): Promise<any> {
-
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Authorization': 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg=='
-      })
-    };
-
-    return this.http.get(`${this.categoriasURL}`, httpOptions)
+    return this.http.get(`${this.categoriasURL}`)
       .toPromise();
   }
 }

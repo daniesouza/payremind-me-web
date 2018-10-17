@@ -3,11 +3,28 @@ import {RouterModule, Routes} from '@angular/router';
 
 import {LancamentosPesquisaComponent} from './lancamentos-pesquisa/lancamentos-pesquisa.component';
 import {LancamentosNovoComponent} from './lancamentos-novo/lancamentos-novo.component';
+import {AuthGuard} from '../seguranca/auth.guard';
 
 const routes: Routes = [
-  {path: 'lancamentos', component: LancamentosPesquisaComponent},
-  {path: 'lancamentos/novo', component: LancamentosNovoComponent},
-  {path: 'lancamentos/:codigo', component: LancamentosNovoComponent},
+  {
+    path: 'lancamentos',
+    component: LancamentosPesquisaComponent,
+    canActivate: [AuthGuard],
+    data: {roles : ['ROLE_PESQUISAR_LANCAMENTO']}
+  },
+  {
+    path: 'lancamentos/novo',
+    component: LancamentosNovoComponent,
+    canActivate: [AuthGuard],
+    data: {roles : ['ROLE_CADASTRAR_LANCAMENTO']}
+  },
+  {
+    path: 'lancamentos/:codigo',
+    component: LancamentosNovoComponent,
+    canActivate: [AuthGuard],
+    data: {roles : ['ROLE_CADASTRAR_LANCAMENTO']}
+
+  },
 ];
 
 @NgModule({

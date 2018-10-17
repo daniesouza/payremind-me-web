@@ -14,22 +14,27 @@
         <label>Vencimento</label>
         <p-calendar dateFormat="dd/mm/yy" name="dataVencimento" [(ngModel)]="lancamento.dataVencimento"
                     [readonlyInput]="false" [inline]="false" [showIcon]="true"
-        name="vencimento" ngModel #vencimento="ngModel" required
+                    name="vencimento" ngModel #vencimento="ngModel" required
         ></p-calendar>
-        <p-message severity="error" text="Informe uma data de vencimento"  *ngIf="vencimento.hasError('required') && vencimento.dirty"></p-message>
+        <p-message severity="error" text="Informe uma data de vencimento"
+                   *ngIf="vencimento.hasError('required') && vencimento.dirty"></p-message>
       </div>
 
       <div class="ui-g-6 ui-md-3 ui-fluid">
         <label>{{ tipo.value === 'RECEITA' ? 'Receita' : 'Despesa '}}</label>
-        <p-calendar dateFormat="dd/mm/yy" name="dataPagamento" [readonlyInput]="true" [(ngModel)]="lancamento.dataPagamento" [inline]="false" [showIcon]="true"></p-calendar>
+        <p-calendar dateFormat="dd/mm/yy" name="dataPagamento" [readonlyInput]="true"
+                    [(ngModel)]="lancamento.dataPagamento" [inline]="false" [showIcon]="true"></p-calendar>
       </div>
 
       <div class="ui-g-12 ui-md-9 ui-fluid">
         <label>Descrição</label>
-        <input pInputText type="text" name="descricao" [(ngModel)]="lancamento.descricao" ngModel #descricao="ngModel" required minlength="5">
+        <input pInputText type="text" name="descricao" [(ngModel)]="lancamento.descricao" ngModel #descricao="ngModel"
+               required minlength="5">
 
-        <p-message severity="error" text="Informe uma descrição"    *ngIf="descricao.hasError('required') && descricao.dirty"></p-message>
-        <p-message severity="error" text=" Minimo de 5 caracteres"  *ngIf="descricao.hasError('minlength') && descricao.dirty"></p-message>
+        <p-message severity="error" text="Informe uma descrição"
+                   *ngIf="descricao.hasError('required') && descricao.dirty"></p-message>
+        <p-message severity="error" text=" Minimo de 5 caracteres"
+                   *ngIf="descricao.hasError('minlength') && descricao.dirty"></p-message>
 
       </div>
 
@@ -43,11 +48,12 @@
 
       <div class="ui-g-12  ui-md-6 ui-fluid">
         <label>Categoria</label>
-        <p-dropdown [options]="categorias"  placeholder="Selecione" [autoWidth]="false"
+        <p-dropdown [options]="categorias" placeholder="Selecione" [autoWidth]="false"
                     name="categoria" ngModel #categoria="ngModel"
                     [(ngModel)]="lancamento.categoria.codigo"
                     required></p-dropdown>
-        <p-message severity="error" text="Informe a categoria" *ngIf="categoria.hasError('required') && categoria.dirty "></p-message>
+        <p-message severity="error" text="Informe a categoria"
+                   *ngIf="categoria.hasError('required') && categoria.dirty "></p-message>
       </div>
 
       <div class="ui-g-12  ui-md-6 ui-fluid">
@@ -56,7 +62,8 @@
                     name="pessoa" ngModel #pessoa="ngModel"
                     [(ngModel)]="lancamento.pessoa.codigo"
                     required></p-dropdown>
-        <p-message severity="error" text="Informe a pessoa" *ngIf="pessoa.hasError('required') && pessoa.dirty "></p-message>
+        <p-message severity="error" text="Informe a pessoa"
+                   *ngIf="pessoa.hasError('required') && pessoa.dirty "></p-message>
       </div>
 
       <div class="ui-g-12 ui-fluid">
@@ -65,10 +72,10 @@
       </div>
 
       <div class="ui-g-12">
-        <button pButton type="submit" label="Salvar" [disabled]="form.invalid"></button>
-        <button pButton type="button" label="Novo" class="ui-button-info"
-        (click)="novo(form)"></button>
-        <a routerLink="/lancamentos" >Voltar para a pesquisa</a>
+        <button pButton type="submit" label="Salvar" [disabled]="!authService.temPermissao('ROLE_CADASTRAR_LANCAMENTO')" [disabled]="form.invalid"></button>
+        <button pButton type="button" label="Novo" [disabled]="!authService.temPermissao('ROLE_CADASTRAR_LANCAMENTO')" class="ui-button-info"
+                (click)="novo(form)"></button>
+        <a routerLink="/lancamentos">Voltar para a pesquisa</a>
       </div>
 
     </div>

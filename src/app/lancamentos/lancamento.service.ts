@@ -24,10 +24,6 @@ export class LancamentoService {
   pesquisar(filtro: LancamentoFiltro): Promise<any> {
 
     const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Authorization': 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg=='
-      }),
       params: new HttpParams().set('page', String(filtro.page))
         .set('size', String(filtro.size))
     };
@@ -63,14 +59,8 @@ export class LancamentoService {
 
   buscaPorCodigo(codigo: number): Promise<any> {
 
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Authorization': 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg=='
-      })
-    };
 
-    return this.http.get(`${this.lancamentosUrl}/${codigo}`, httpOptions)
+    return this.http.get(`${this.lancamentosUrl}/${codigo}`)
       .toPromise()
       .then((lancamento: Lancamento) => {
         lancamento.dataVencimento = lancamento.dataVencimento ? new Date(lancamento.dataVencimento + 'T00:00:00') : null;
@@ -80,39 +70,18 @@ export class LancamentoService {
   }
 
   salvarLancamento(lancamento: Lancamento): Promise<any> {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Authorization': 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg=='
-      }),
-    };
 
-    return this.http.post(`${this.lancamentosUrl}`, lancamento, httpOptions)
+    return this.http.post(`${this.lancamentosUrl}`, lancamento)
       .toPromise();
   }
 
   atualizarLancamento(lancamento: Lancamento): Promise<any> {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Authorization': 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg=='
-      }),
-    };
-
-    return this.http.put(`${this.lancamentosUrl}/${lancamento.codigo}`, lancamento, httpOptions)
+    return this.http.put(`${this.lancamentosUrl}/${lancamento.codigo}`, lancamento)
       .toPromise();
   }
 
   excluir(codigo: number): Promise<void> {
-
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Authorization': 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg=='
-      }),
-    };
-
-    return this.http.delete(`${this.lancamentosUrl}/${codigo}`, httpOptions)
+    return this.http.delete(`${this.lancamentosUrl}/${codigo}`)
       .toPromise()
       .then(() => null);
   }

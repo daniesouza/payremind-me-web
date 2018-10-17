@@ -3,6 +3,7 @@ import {ConfirmationService, LazyLoadEvent, MessageService} from 'primeng/api';
 import {PessoasFiltro, PessoasService} from '../pessoas.service';
 import {ErrorHandlerService} from '../../core/error-handler.service';
 import {Title} from '@angular/platform-browser';
+import {AuthService} from '../../seguranca/auth.service';
 
 @Component({
   selector: 'app-pessoas-pesquisa',
@@ -16,7 +17,8 @@ export class PessoasPesquisaComponent implements OnInit {
               private confirmationService: ConfirmationService,
               private errorHandler: ErrorHandlerService,
               private pessoasService: PessoasService,
-              private title: Title) {
+              private title: Title,
+              private authService: AuthService) {
   }
 
   pessoas = [];

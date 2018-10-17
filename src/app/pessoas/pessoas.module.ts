@@ -20,6 +20,7 @@ import {InputSwitchModule} from 'primeng/inputswitch';
 
 import {PessoasPesquisaComponent} from './pessoas-pesquisa/pessoas-pesquisa.component';
 import {PessoasNovoComponent} from './pessoas-novo/pessoas-novo.component';
+import {PessoasRoutingModule} from './pessoas-routing.module';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import {PessoasNovoComponent} from './pessoas-novo/pessoas-novo.component';
     CommonModule,
     FormsModule,
     HttpClientModule,
+    PessoasRoutingModule,
 
     InputTextModule,
     ButtonModule,

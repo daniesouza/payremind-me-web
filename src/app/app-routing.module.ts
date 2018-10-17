@@ -1,15 +1,15 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {PessoasPesquisaComponent} from './pessoas/pessoas-pesquisa/pessoas-pesquisa.component';
-import {PessoasNovoComponent} from './pessoas/pessoas-novo/pessoas-novo.component';
 import {NotFoundComponent} from './core/not-found.component';
 import {LancamentosRoutingModule} from './lancamentos/lancamentos-routing.module';
+import {PessoasRoutingModule} from './pessoas/pessoas-routing.module';
+import {SegurancaRoutingModule} from './seguranca/seguranca-routing.module';
+import {NaoAutorizadoComponent} from './core/nao-autorizado.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: 'lancamentos', pathMatch: 'full'},
-  {path: 'pessoas', component: PessoasPesquisaComponent},
-  {path: 'pessoas/novo', component: PessoasNovoComponent},
+  {path: '', redirectTo: 'login', pathMatch: 'full'},
   {path: 'pagina-nao-encontrada', component: NotFoundComponent},
+  {path: 'nao-autorizado', component: NaoAutorizadoComponent},
   {path: '**', redirectTo: 'pagina-nao-encontrada'},
 
 
@@ -18,7 +18,9 @@ const routes: Routes = [
 @NgModule({
   imports: [
     RouterModule.forRoot(routes),
-    LancamentosRoutingModule
+    LancamentosRoutingModule,
+    PessoasRoutingModule,
+    SegurancaRoutingModule
 
   ],
   exports: [RouterModule]

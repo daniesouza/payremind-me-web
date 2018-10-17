@@ -9,16 +9,20 @@ import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {ConfirmationService, MessageService} from 'primeng/api';
 import {NotFoundComponent} from './not-found.component';
 import {Title} from '@angular/platform-browser';
+import {NaoAutorizadoComponent} from './nao-autorizado.component';
+
 
 @NgModule({
   imports: [
     CommonModule,
     ToastModule,
     ConfirmDialogModule,
-    RouterModule
+    RouterModule,
   ],
   declarations: [
-    NavbarComponent, NotFoundComponent
+    NavbarComponent,
+    NotFoundComponent,
+    NaoAutorizadoComponent
   ],
   exports: [
     NavbarComponent,
@@ -28,7 +32,7 @@ import {Title} from '@angular/platform-browser';
   providers: [
     MessageService,
     ConfirmationService,
-    Title
+    Title,
     // {provide: LOCALE_ID, useValue: 'pt-BR'}
   ],
 })

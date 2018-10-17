@@ -8,6 +8,7 @@ import {LancamentoService} from '../lancamento.service';
 import {MessageService} from 'primeng/api';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Title} from '@angular/platform-browser';
+import {AuthService} from '../../seguranca/auth.service';
 
 @Component({
   selector: 'app-lancamentos-novo',
@@ -23,7 +24,8 @@ export class LancamentosNovoComponent implements OnInit {
               private errorHandler: ErrorHandlerService,
               private route: ActivatedRoute,
               private router: Router,
-              private title: Title) {
+              private title: Title,
+              ) {
   }
 
   tipos = [
@@ -75,9 +77,6 @@ export class LancamentosNovoComponent implements OnInit {
           summary: 'Lançamento adicionado com sucesso.',
           detail: 'Codigo:' + lancamento.codigo
         });
-
-        // this.lancamento = new Lancamento();
-        // form.reset();
         this.router.navigate(['/lancamentos/' + lancamento.codigo]);
       })
       .catch(error => this.errorHandler.handle(error));
@@ -91,9 +90,6 @@ export class LancamentosNovoComponent implements OnInit {
           summary: 'Lançamento atualizado com sucesso.',
           detail: 'Codigo:' + lancamento.codigo
         });
-
-        // this.lancamento = new Lancamento();
-        // form.reset();
         this.router.navigate(['/lancamentos/' + lancamento.codigo]);
       })
       .catch(error => this.errorHandler.handle(error));

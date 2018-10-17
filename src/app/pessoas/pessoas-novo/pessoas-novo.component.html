@@ -5,28 +5,36 @@
     <div class="ui-g">
 
       <div class="ui-g-12">
-        <h1>Nova Pessoa</h1>
+        <h1>{{pessoa.codigo ? 'Editar pessoa '+pessoa.nome : 'Novo'}} Lançamento</h1>
       </div>
 
       <div class="ui-g-12 ui-md-12 ui-fluid">
         <label>Nome</label>
-        <input pInputText type="text" name="pessoa" ngModel [(ngModel)]="pessoa.nome" #pes="ngModel" required minlength="3">
-        <p-message severity="error" text="Informe a pessoa"  *ngIf="pes.hasError('required') && pes.dirty"></p-message>
-        <p-message severity="error" text=" Minimo de 3 caracteres"  *ngIf="pes.hasError('minlength') && pes.dirty"></p-message>
+        <input pInputText type="text" name="pessoa" ngModel [(ngModel)]="pessoa.nome" #pes="ngModel" required
+               minlength="3">
+        <p-message severity="error" text="Informe a pessoa" *ngIf="pes.hasError('required') && pes.dirty"></p-message>
+        <p-message severity="error" text=" Minimo de 3 caracteres"
+                   *ngIf="pes.hasError('minlength') && pes.dirty"></p-message>
       </div>
 
       <div class="ui-g-12 ui-md-9 ui-fluid">
         <label>Logradouro</label>
-        <input pInputText type="text" name="logradouro" ngModel [(ngModel)]="pessoa.endereco.logradouro" #logradouro="ngModel" required minlength="5">
-        <p-message severity="error" text="Informe o logradouro"  *ngIf="logradouro.hasError('required') && logradouro.dirty"></p-message>
-        <p-message severity="error" text=" Minimo de 5 caracteres"  *ngIf="logradouro.hasError('minlength') && logradouro.dirty"></p-message>
+        <input pInputText type="text" name="logradouro" ngModel [(ngModel)]="pessoa.endereco.logradouro"
+               #logradouro="ngModel" required minlength="5">
+        <p-message severity="error" text="Informe o logradouro"
+                   *ngIf="logradouro.hasError('required') && logradouro.dirty"></p-message>
+        <p-message severity="error" text=" Minimo de 5 caracteres"
+                   *ngIf="logradouro.hasError('minlength') && logradouro.dirty"></p-message>
       </div>
 
       <div class="ui-g-12 ui-md-3 ui-fluid">
         <label>Número</label>
-        <input pInputText type="text" name="numero" ngModel [(ngModel)]="pessoa.endereco.numero" #numero="ngModel" required minlength="1">
-        <p-message severity="error" text="Informe o número"  *ngIf="numero.hasError('required') && numero.dirty"></p-message>
-        <p-message severity="error" text=" Minimo de 1 caracter"  *ngIf="numero.hasError('minlength') && numero.dirty"></p-message>
+        <input pInputText type="text" name="numero" ngModel [(ngModel)]="pessoa.endereco.numero" #numero="ngModel"
+               required minlength="1">
+        <p-message severity="error" text="Informe o número"
+                   *ngIf="numero.hasError('required') && numero.dirty"></p-message>
+        <p-message severity="error" text=" Minimo de 1 caracter"
+                   *ngIf="numero.hasError('minlength') && numero.dirty"></p-message>
       </div>
 
       <div class="ui-g-12 ui-md-4 ui-fluid">
@@ -36,34 +44,45 @@
 
       <div class="ui-g-12 ui-md-4 ui-fluid">
         <label>Bairro</label>
-        <input pInputText type="text" name="bairro" ngModel [(ngModel)]="pessoa.endereco.bairro" #bairro="ngModel" required minlength="5">
-        <p-message severity="error" text="Informe o bairro"  *ngIf="bairro.hasError('required') && bairro.dirty"></p-message>
-        <p-message severity="error" text=" Minimo de 5 caracteres"  *ngIf="bairro.hasError('minlength') && bairro.dirty"></p-message>
+        <input pInputText type="text" name="bairro" ngModel [(ngModel)]="pessoa.endereco.bairro" #bairro="ngModel"
+               required minlength="5">
+        <p-message severity="error" text="Informe o bairro"
+                   *ngIf="bairro.hasError('required') && bairro.dirty"></p-message>
+        <p-message severity="error" text=" Minimo de 5 caracteres"
+                   *ngIf="bairro.hasError('minlength') && bairro.dirty"></p-message>
       </div>
 
       <div class="ui-g-12 ui-md-4 ui-fluid">
         <label>CEP</label>
-        <p-inputMask  mask="99999-999" name="cep" ngModel [(ngModel)]="pessoa.endereco.cep" #cep="ngModel" required></p-inputMask>
-        <p-message severity="error" text="Informe o CEP"  *ngIf="cep.hasError('required') && cep.dirty"></p-message>
+        <p-inputMask mask="99999-999" name="cep" ngModel [(ngModel)]="pessoa.endereco.cep" #cep="ngModel"
+                     required></p-inputMask>
+        <p-message severity="error" text="Informe o CEP" *ngIf="cep.hasError('required') && cep.dirty"></p-message>
       </div>
 
       <div class="ui-g-12 ui-md-6 ui-fluid">
         <label>Cidade</label>
-        <input pInputText type="text" name="cidade" ngModel [(ngModel)]="pessoa.endereco.cidade" #cidade="ngModel" required minlength="3">
-        <p-message severity="error" text="Informe a cidade"  *ngIf="cidade.hasError('required') && cidade.dirty"></p-message>
-        <p-message severity="error" text=" Minimo de 3 caracteres"  *ngIf="cidade.hasError('minlength') && cidade.dirty"></p-message>
+        <input pInputText type="text" name="cidade" ngModel [(ngModel)]="pessoa.endereco.cidade" #cidade="ngModel"
+               required minlength="3">
+        <p-message severity="error" text="Informe a cidade"
+                   *ngIf="cidade.hasError('required') && cidade.dirty"></p-message>
+        <p-message severity="error" text=" Minimo de 3 caracteres"
+                   *ngIf="cidade.hasError('minlength') && cidade.dirty"></p-message>
       </div>
 
       <div class="ui-g-12 ui-md-6 ui-fluid">
         <label>Estado</label>
-        <input pInputText type="text" name="estado" ngModel [(ngModel)]="pessoa.endereco.estado" #estado="ngModel" required minlength="3">
-        <p-message severity="error" text="Informe o estado"  *ngIf="estado.hasError('required') && estado.dirty"></p-message>
-        <p-message severity="error" text=" Minimo de 3 caracteres"  *ngIf="estado.hasError('minlength') && estado.dirty"></p-message>
+        <input pInputText type="text" name="estado" ngModel [(ngModel)]="pessoa.endereco.estado" #estado="ngModel"
+               required minlength="3">
+        <p-message severity="error" text="Informe o estado"
+                   *ngIf="estado.hasError('required') && estado.dirty"></p-message>
+        <p-message severity="error" text=" Minimo de 3 caracteres"
+                   *ngIf="estado.hasError('minlength') && estado.dirty"></p-message>
       </div>
 
       <div class="ui-g-12">
-        <button pButton type="submit" label="Salvar"></button>
-        <button pButton type="submit" label="Novo" class="ui-button-info"></button>
+        <button pButton type="submit" label="Salvar"  [disabled]="!authService.temPermissao('ROLE_CADASTRAR_PESSOA')" ></button>
+        <button pButton type="button" label="Novo"  [disabled]="!authService.temPermissao('ROLE_CADASTRAR_PESSOA')"  class="ui-button-info"
+                (click)="novo(form)"></button>
         <a routerLink="/pessoas">Voltar para a pesquisa</a>
       </div>
 
