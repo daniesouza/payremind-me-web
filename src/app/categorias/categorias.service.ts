@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
-import {PessoasFiltro} from '../pessoas/pessoas.service';
+import {CustomHttpService} from '../seguranca/custom-http.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +8,7 @@ export class CategoriasService {
 
   categoriasURL = 'http://localhost:8080/payremind-me-api/categorias';
 
-  constructor(private http: HttpClient) {
+  constructor(private http: CustomHttpService) {
   }
 
   pesquisar(): Promise<any> {

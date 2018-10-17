@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {MessageService} from 'primeng/api';
 import {HttpErrorResponse} from '@angular/common/http';
-import {NotAuthenticatedError} from '../seguranca/money-http.service';
+import {NotAuthenticatedError} from '../seguranca/custom-http.service';
 import {Router} from '@angular/router';
 
 @Injectable({

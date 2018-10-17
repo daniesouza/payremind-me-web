@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
-import {Lancamento, Pessoa} from '../core/model';
+import {HttpHeaders, HttpParams} from '@angular/common/http';
+import {Pessoa} from '../core/model';
+import {CustomHttpService} from '../seguranca/custom-http.service';
 
 
 export class PessoasFiltro {
@@ -16,7 +17,7 @@ export class PessoasService {
 
   pessoasURL = 'http://localhost:8080/payremind-me-api/pessoas';
 
-  constructor(private http: HttpClient) {
+  constructor(private http: CustomHttpService) {
   }
 
   pesquisar(filtro: PessoasFiltro): Promise<any> {

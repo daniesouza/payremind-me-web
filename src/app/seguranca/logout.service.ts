@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 
 import {AuthService} from './auth.service';
-import {HttpClient} from '@angular/common/http';
+import {CustomHttpService} from './custom-http.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +10,7 @@ import {HttpClient} from '@angular/common/http';
   tokensRenokeUrl: string;
 
   constructor(
-    private http: HttpClient,
+    private http: CustomHttpService,
     private auth: AuthService
   ) {
     this.tokensRenokeUrl = 'http://localhost:8080/payremind-me-api/tokens/revoke';

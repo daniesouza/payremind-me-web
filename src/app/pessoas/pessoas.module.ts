@@ -1,7 +1,6 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
 
 import {InputTextModule} from 'primeng/inputtext';
 import {InputTextareaModule} from 'primeng/inputtextarea';
@@ -21,15 +20,13 @@ import {InputSwitchModule} from 'primeng/inputswitch';
 import {PessoasPesquisaComponent} from './pessoas-pesquisa/pessoas-pesquisa.component';
 import {PessoasNovoComponent} from './pessoas-novo/pessoas-novo.component';
 import {PessoasRoutingModule} from './pessoas-routing.module';
-import {AuthService} from '../seguranca/auth.service';
-import {MoneyHttpService} from '../seguranca/money-http.service';
+
 
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    HttpClientModule,
     PessoasRoutingModule,
 
     InputTextModule,

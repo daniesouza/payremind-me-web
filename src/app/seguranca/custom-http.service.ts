@@ -10,7 +10,7 @@ export class NotAuthenticatedError {}
 @Injectable({
   providedIn: 'root'
 })
-export class MoneyHttpService extends HttpClient {
+export class CustomHttpService extends HttpClient {
 
   constructor(
     private auth: AuthService,

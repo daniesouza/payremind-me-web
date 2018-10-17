@@ -2,7 +2,6 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {HttpClientModule} from '@angular/common/http';
 
 
 import {InputTextModule} from 'primeng/inputtext';
@@ -29,7 +28,6 @@ import {LancamentosRoutingModule} from './lancamentos-routing.module';
     CommonModule,
     FormsModule,
     BrowserAnimationsModule,
-    HttpClientModule,
     LancamentosRoutingModule,
 
     InputTextModule,
