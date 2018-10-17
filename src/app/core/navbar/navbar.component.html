@@ -13,7 +13,7 @@
           class="navbar-menuitem"><a (click)="exibindoMenu = false" routerLink="/lancamentos">Lançamentos</a></li>
       <li *ngIf="authService.temPermissao('ROLE_PESQUISAR_PESSOA')"
           class="navbar-menuitem"><a (click)="exibindoMenu = false" routerLink="/pessoas">Pessoas</a></li>
-      <li class="navbar-menuitem"><a (click)="exibindoMenu = false" routerLink="/login" >Logout</a></li>
+      <li class="navbar-menuitem"><a href="javascript:" (click)="logout()">Logout</a></li>
     </ul>
   </div>
 </nav>

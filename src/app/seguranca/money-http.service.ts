@@ -56,7 +56,6 @@ export class MoneyHttpService extends HttpClient {
           if (this.auth.isAccessTokenInvalido()) {
             throw new NotAuthenticatedError();
           }
-
           return fn().toPromise();
         });
 

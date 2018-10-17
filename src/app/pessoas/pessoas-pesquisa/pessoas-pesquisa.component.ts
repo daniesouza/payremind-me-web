@@ -36,7 +36,8 @@ export class PessoasPesquisaComponent implements OnInit {
       .then(resultado => {
         this.pessoas = resultado.pessoas;
         this.totalRecords = resultado.totalRecords;
-      });
+      })
+      .catch(error => this.errorHandler.handle(error));
   }
 
   onChangePage(event: LazyLoadEvent) {

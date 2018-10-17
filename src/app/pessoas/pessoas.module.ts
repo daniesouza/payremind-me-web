@@ -21,6 +21,8 @@ import {InputSwitchModule} from 'primeng/inputswitch';
 import {PessoasPesquisaComponent} from './pessoas-pesquisa/pessoas-pesquisa.component';
 import {PessoasNovoComponent} from './pessoas-novo/pessoas-novo.component';
 import {PessoasRoutingModule} from './pessoas-routing.module';
+import {AuthService} from '../seguranca/auth.service';
+import {MoneyHttpService} from '../seguranca/money-http.service';
 
 
 @NgModule({

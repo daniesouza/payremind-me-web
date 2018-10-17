@@ -7,6 +7,8 @@ import {PessoasModule} from './pessoas/pessoas.module';
 import {CoreModule} from './core/core.module';
 import {AppRoutingModule} from './app-routing.module';
 import {SegurancaModule} from './seguranca/seguranca.module';
+import {MoneyHttpService} from './seguranca/money-http.service';
+import {AuthService} from './seguranca/auth.service';
 
 @NgModule({
   declarations: [
@@ -21,11 +23,8 @@ import {SegurancaModule} from './seguranca/seguranca.module';
     PessoasModule,
   ],
   providers: [
-  //   {
-  //   provide: HTTP_INTERCEPTORS,
-  //   useClass: AuthInterceptor,
-  //   multi: true,
-  // }
+    MoneyHttpService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })
