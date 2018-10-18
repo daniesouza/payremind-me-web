@@ -18,7 +18,7 @@ export class PessoasPesquisaComponent implements OnInit {
               private errorHandler: ErrorHandlerService,
               private pessoasService: PessoasService,
               private title: Title,
-              private authService: AuthService) {
+              public authService: AuthService) {
   }
 
   pessoas = [];

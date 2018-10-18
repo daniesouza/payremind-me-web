@@ -25,7 +25,7 @@ export class PessoasNovoComponent implements OnInit {
               private route: ActivatedRoute,
               private router: Router,
               private title: Title,
-              private authService: AuthService) {
+              public authService: AuthService) {
   }
 
   ngOnInit() {

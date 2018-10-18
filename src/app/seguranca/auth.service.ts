@@ -1,16 +1,20 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {JwtHelperService} from '@auth0/angular-jwt';
+import {environment} from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  oauthTokenURL = 'http://localhost:8080/payremind-me-api/oauth/token';
+  oauthTokenURL: string;
   jwtPayLoad: any;
 
-  constructor(private http: HttpClient, private jwtService: JwtHelperService) {
+  constructor(private http: HttpClient,
+              private jwtService: JwtHelperService) {
+    this.oauthTokenURL = `${environment.apiUrl}/oauth/token`;
+
     this.carregarToken();
   }
 

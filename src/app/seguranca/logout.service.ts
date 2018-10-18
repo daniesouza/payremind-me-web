@@ -2,10 +2,12 @@ import {Injectable} from '@angular/core';
 
 import {AuthService} from './auth.service';
 import {CustomHttpService} from './custom-http.service';
+import {environment} from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
-})export class LogoutService {
+})
+export class LogoutService {
 
   tokensRenokeUrl: string;
 
@@ -13,11 +15,11 @@ import {CustomHttpService} from './custom-http.service';
     private http: CustomHttpService,
     private auth: AuthService
   ) {
-    this.tokensRenokeUrl = 'http://localhost:8080/payremind-me-api/tokens/revoke';
+    this.tokensRenokeUrl = `${environment.apiUrl}/tokens/revoke`;
   }
 
   logout() {
-    return this.http.delete(this.tokensRenokeUrl, { withCredentials: true })
+    return this.http.delete(this.tokensRenokeUrl, {withCredentials: true})
       .toPromise()
       .then(() => {
         this.auth.limparAccessToken();

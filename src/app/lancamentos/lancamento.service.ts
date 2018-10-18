@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpParams} from '@angular/common/http';
 import {Lancamento} from '../core/model';
 import {CustomHttpService} from '../seguranca/custom-http.service';
+import {environment} from '../../environments/environment';
 
 
 export class LancamentoFiltro {
@@ -17,9 +18,11 @@ export class LancamentoFiltro {
 })
 export class LancamentoService {
 
-  lancamentosUrl = 'http://localhost:8080/payremind-me-api/lancamentos';
+  lancamentosUrl: string;
 
   constructor(private http: CustomHttpService) {
+    this.lancamentosUrl = `${environment.apiUrl}/lancamentos`;
+
   }
 
   pesquisar(filtro: LancamentoFiltro): Promise<any> {

@@ -1,14 +1,16 @@
 import {Injectable} from '@angular/core';
 import {CustomHttpService} from '../seguranca/custom-http.service';
+import {environment} from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CategoriasService {
 
-  categoriasURL = 'http://localhost:8080/payremind-me-api/categorias';
+  categoriasURL: string;
 
   constructor(private http: CustomHttpService) {
+    this.categoriasURL = `${environment.apiUrl}/categorias`;
   }
 
   pesquisar(): Promise<any> {

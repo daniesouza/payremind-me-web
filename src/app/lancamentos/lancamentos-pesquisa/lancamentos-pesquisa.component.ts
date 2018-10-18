@@ -17,7 +17,7 @@ export class LancamentosPesquisaComponent implements OnInit {
               private errorHandler: ErrorHandlerService,
               private lancamentoService: LancamentoService,
               private title: Title,
-              private authService: AuthService) {
+              public authService: AuthService) {
   }
 
   lancamentos = [];

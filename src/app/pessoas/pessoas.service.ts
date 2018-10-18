@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpHeaders, HttpParams} from '@angular/common/http';
 import {Pessoa} from '../core/model';
 import {CustomHttpService} from '../seguranca/custom-http.service';
+import {environment} from '../../environments/environment';
 
 
 export class PessoasFiltro {
@@ -15,9 +16,10 @@ export class PessoasFiltro {
 })
 export class PessoasService {
 
-  pessoasURL = 'http://localhost:8080/payremind-me-api/pessoas';
+  pessoasURL: string;
 
   constructor(private http: CustomHttpService) {
+    this.pessoasURL = `${environment.apiUrl}/pessoas`;
   }
 
   pesquisar(filtro: PessoasFiltro): Promise<any> {

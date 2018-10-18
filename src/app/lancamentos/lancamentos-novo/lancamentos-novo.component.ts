@@ -25,6 +25,7 @@ export class LancamentosNovoComponent implements OnInit {
               private route: ActivatedRoute,
               private router: Router,
               private title: Title,
+              public authService: AuthService
               ) {
   }
 
