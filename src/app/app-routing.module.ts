@@ -7,6 +7,13 @@ import {SegurancaRoutingModule} from './seguranca/seguranca-routing.module';
 import {NaoAutorizadoComponent} from './core/nao-autorizado.component';
 
 const routes: Routes = [
+
+  // Lazy loading modules apenas quando o usuario acessar
+  // {path: 'lancamentos', loadChildren: 'app/lancamentos/lancamentos.module#LancamentosModule'},
+  // {path: 'pessoas', loadChildren: 'app/pessoas/pessoas.module#PessoasModule'},
+
+
+
   {path: '', redirectTo: 'login', pathMatch: 'full'},
   {path: 'pagina-nao-encontrada', component: NotFoundComponent},
   {path: 'nao-autorizado', component: NaoAutorizadoComponent},

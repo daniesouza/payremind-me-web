@@ -12,6 +12,7 @@ import {MessageModule} from 'primeng/message';
 import {SegurancaRoutingModule} from './seguranca-routing.module';
 import {LoginComponent} from './login/login.component';
 import {JwtModule} from '@auth0/angular-jwt';
+import {environment} from '../../environments/environment';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -27,8 +28,8 @@ export function tokenGetter() {
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
-        whitelistedDomains: ['localhost:8080', 'https://payremind-me-api.herokuapp.com'],
-        blacklistedRoutes: ['http://localhost:8080/payremind-me-api/oauth/token', 'https://payremind-me-api.herokuapp.com/oauth/token/']
+        whitelistedDomains: environment.tokenWhitelistedDomains,
+        blacklistedRoutes: environment.tokenBlacklistedRoutes
       }
     }),
 
