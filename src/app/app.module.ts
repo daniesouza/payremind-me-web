@@ -7,6 +7,7 @@ import {PessoasModule} from './pessoas/pessoas.module';
 import {CoreModule} from './core/core.module';
 import {AppRoutingModule} from './app-routing.module';
 import {SegurancaModule} from './seguranca/seguranca.module';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import {SegurancaModule} from './seguranca/seguranca.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     CoreModule,
     SegurancaModule,
     LancamentosModule,
