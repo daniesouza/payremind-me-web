@@ -52,8 +52,6 @@
                     name="categoria" ngModel #categoria="ngModel"
                     [(ngModel)]="lancamento.categoria.codigo"
                     required></p-dropdown>
-        <p-message severity="error" text="Informe a categoria"
-                   *ngIf="categoria.hasError('required') && categoria.dirty "></p-message>
       </div>
 
       <div class="ui-g-12  ui-md-6 ui-fluid">
@@ -62,8 +60,6 @@
                     name="pessoa" ngModel #pessoa="ngModel"
                     [(ngModel)]="lancamento.pessoa.codigo"
                     required></p-dropdown>
-        <p-message severity="error" text="Informe a pessoa"
-                   *ngIf="pessoa.hasError('required') && pessoa.dirty "></p-message>
       </div>
 
       <div class="ui-g-12 ui-fluid">

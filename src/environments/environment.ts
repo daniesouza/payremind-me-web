@@ -5,8 +5,9 @@
 export const environment = {
   production: false,
   apiUrl: 'http://localhost:8080/payremind-me-api',
+
   whitelistedDomains: ['localhost:8080'],
-  blacklistedRoutes: ['localhost:8080/payremind-me-api/oauth/token']
+  blacklistedRoutes: ['http://localhost:8080/payremind-me-api/oauth/token']
 };
 
 /*

@@ -14,7 +14,7 @@ const routes: Routes = [
 
 
 
-  {path: '', redirectTo: 'login', pathMatch: 'full'},
+  {path: '', redirectTo: 'lancamentos', pathMatch: 'full'},
   {path: 'pagina-nao-encontrada', component: NotFoundComponent},
   {path: 'nao-autorizado', component: NaoAutorizadoComponent},
   {path: '**', redirectTo: 'pagina-nao-encontrada'},
