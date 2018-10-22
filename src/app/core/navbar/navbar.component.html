@@ -10,6 +10,8 @@
       <li class="navbar-fechar"><a href="#" (click)="exibindoMenu = false">X</a></li>
       <li class="navbar-usuario">{{authService.jwtPayLoad?.nome}}</li>
       <li *ngIf="authService.temPermissao('ROLE_PESQUISAR_LANCAMENTO')"
+          class="navbar-menuitem"><a (click)="exibindoMenu = false" routerLink="/dashboard">DashBoard</a></li>
+      <li *ngIf="authService.temPermissao('ROLE_PESQUISAR_LANCAMENTO')"
           class="navbar-menuitem"><a (click)="exibindoMenu = false" routerLink="/lancamentos">Lançamentos</a></li>
       <li *ngIf="authService.temPermissao('ROLE_PESQUISAR_PESSOA')"
           class="navbar-menuitem"><a (click)="exibindoMenu = false" routerLink="/pessoas">Pessoas</a></li>

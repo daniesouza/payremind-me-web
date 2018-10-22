@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
 
     this.authService.login(username, password)
       .then(value => {
-        this.router.navigate(['/lancamentos/']);
+        this.router.navigate(['/dashboard']);
       })
       .catch(error => this.errorHandler.handle(error));
 
