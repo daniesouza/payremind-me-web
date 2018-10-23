@@ -59,24 +59,24 @@
         <p-message severity="error" text="Informe o CEP" *ngIf="cep.hasError('required') && cep.dirty"></p-message>
       </div>
 
-      <div class="ui-g-12 ui-md-6 ui-fluid">
-        <label>Cidade</label>
-        <input pInputText type="text" name="cidade" ngModel [(ngModel)]="pessoa.endereco.cidade" #cidade="ngModel"
-               required minlength="3">
-        <p-message severity="error" text="Informe a cidade"
-                   *ngIf="cidade.hasError('required') && cidade.dirty"></p-message>
-        <p-message severity="error" text=" Minimo de 3 caracteres"
-                   *ngIf="cidade.hasError('minlength') && cidade.dirty"></p-message>
-      </div>
+
 
       <div class="ui-g-12 ui-md-6 ui-fluid">
         <label>Estado</label>
-        <input pInputText type="text" name="estado" ngModel [(ngModel)]="pessoa.endereco.estado" #estado="ngModel"
-               required minlength="3">
-        <p-message severity="error" text="Informe o estado"
-                   *ngIf="estado.hasError('required') && estado.dirty"></p-message>
-        <p-message severity="error" text=" Minimo de 3 caracteres"
-                   *ngIf="estado.hasError('minlength') && estado.dirty"></p-message>
+        <p-dropdown placeholder="Selecione..." name="estado" [autoWidth]="false" [filter]="true"
+        [options]="estados" [(ngModel)]="estadoSelecionado"
+        (onChange)="onComboEstadoChange()" #estado="ngModel" required></p-dropdown>
+        <p-message severity="error" text="Informe o estado" *ngIf="estado.hasError('required') && estado.dirty"></p-message>
+      </div>
+
+      <div class="ui-g-12 ui-md-6 ui-fluid">
+        <label>Cidade</label>
+        <p-dropdown placeholder="Selecione..." name="cidade" [autoWidth]="false" [filter]="true"
+                    [(ngModel)]="pessoa.endereco.cidade.codigo"
+                    [options]="cidades"
+        #cidade="ngModel" required [disabled]="!estadoSelecionado"></p-dropdown>
+
+        <p-message severity="error" text="Informe a cidade" *ngIf="cidade.hasError('required') && cidade.dirty"></p-message>
       </div>
 
       <div class="ui-g-12">
@@ -87,7 +87,7 @@
 
       <div class="ui-g-12">
         <button pButton type="submit" label="Salvar"
-                [disabled]="!authService.temPermissao('ROLE_CADASTRAR_PESSOA')"></button>
+                [disabled]="!authService.temPermissao('ROLE_CADASTRAR_PESSOA') || form.invalid"></button>
         <button pButton type="button" label="Novo" [disabled]="!authService.temPermissao('ROLE_CADASTRAR_PESSOA')"
                 class="ui-button-info"
                 (click)="novo(form)"></button>

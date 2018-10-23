@@ -17,9 +17,14 @@ export class PessoasFiltro {
 export class PessoasService {
 
   pessoasURL: string;
+  cidadesURL: string;
+  estadosURL: string;
 
   constructor(private http: CustomHttpService) {
     this.pessoasURL = `${environment.apiUrl}/pessoas`;
+    this.estadosURL = `${environment.apiUrl}/estados`;
+    this.cidadesURL = `${environment.apiUrl}/cidades`;
+
   }
 
   pesquisar(filtro: PessoasFiltro): Promise<any> {
@@ -80,5 +85,18 @@ export class PessoasService {
   buscaPorCodigo(codigo: number): Promise<any> {
     return this.http.get(`${this.pessoasURL}/${codigo}`)
       .toPromise();
+  }
+
+  getEstados() {
+    return this.http.get(this.estadosURL)
+      .toPromise();
+  }
+
+  getCidades(estado) {
+    const httpOptions = {
+      params: new HttpParams().set('estado', estado)
+    };
+
+    return this.http.get(this.cidadesURL, httpOptions).toPromise();
   }
 }

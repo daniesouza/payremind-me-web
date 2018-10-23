@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl} from '@angular/forms';
-import {Contato, Lancamento, Pessoa} from '../../core/model';
+import {Cidade, Contato, Lancamento, Pessoa} from '../../core/model';
 import {CategoriasService} from '../../categorias/categorias.service';
 import {PessoasService} from '../pessoas.service';
 import {LancamentoService} from '../../lancamentos/lancamento.service';
@@ -18,6 +18,9 @@ import {AuthService} from '../../seguranca/auth.service';
 export class PessoasNovoComponent implements OnInit {
 
   pessoa = new Pessoa();
+  estados: any[];
+  cidades: any[];
+  estadoSelecionado: number;
 
   constructor(private pessoaService: PessoasService,
               private messageService: MessageService,
@@ -33,6 +36,7 @@ export class PessoasNovoComponent implements OnInit {
     const codigo = this.route.snapshot.params['codigo'];
 
     this.title.setTitle('Nova pessoa');
+    this.loadEstados();
 
     if (codigo) {
       this.buscarPessoa(codigo);
@@ -43,6 +47,12 @@ export class PessoasNovoComponent implements OnInit {
     this.pessoaService.buscaPorCodigo(codigo)
       .then(pessoa => {
         this.pessoa = pessoa;
+
+        this.estadoSelecionado = this.pessoa.endereco.cidade ? this.pessoa.endereco.cidade.estado.codigo : null;
+        if (this.estadoSelecionado) {
+          this.loadCidades();
+        }
+
         this.atualizarTituloEdicao();
       })
       .catch(error => this.errorHandler.handle(error));
@@ -94,4 +104,26 @@ export class PessoasNovoComponent implements OnInit {
     this.title.setTitle('Editar pessoa ' + this.pessoa.nome);
   }
 
+  onComboEstadoChange() {
+    this.pessoa.endereco.cidade = new Cidade();
+    this.loadCidades();
+  }
+
+  loadEstados() {
+    this.pessoaService.getEstados()
+      .then((estados: any[]) => {
+        this.estados = estados.map(estado => {
+          return {label: estado.nome, value: estado.codigo};
+        });
+      });
+  }
+
+  loadCidades() {
+    this.pessoaService.getCidades(this.estadoSelecionado)
+      .then((cidades: any[]) => {
+        this.cidades = cidades.map(cidade => {
+          return {label: cidade.nome, value: cidade.codigo};
+        });
+      });
+  }
 }
