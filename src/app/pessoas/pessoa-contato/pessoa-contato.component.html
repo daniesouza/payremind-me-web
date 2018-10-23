@@ -1,0 +1,74 @@
+<div class="ui-g">
+  <div class="ui-g-12">
+    <button pButton label="Novo" icon="pi pi-plus" type="button"
+            class="ui-button-secondary"
+            (click)="novoContato()">
+    </button>
+  </div>
+  <div class="ui-g-12">
+    <p-table [value]="contatos"
+             [responsive]="true"
+             #tabela>
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Nome</th>
+          <th>E-mail</th>
+          <th>Telefone</th>
+          <th class="col-button"></th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-contato let-rowIndex="rowIndex">
+        <tr>
+          <td>{{contato.nome}}</td>
+          <td>{{contato.email}}</td>
+          <td>{{contato.telefone}}</td>
+          <td>
+            <button pButton icon="pi pi-pencil" pTooltip="Editar" (click)="editarContato(contato,rowIndex)" type="button" tooltipPosition="top"></button>
+            <button pButton icon="pi pi-trash" pTooltip="Excluir" (click)="removerContato(rowIndex)" type="button" tooltipPosition="top"></button>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+    <div *ngIf="contatos.length==0">
+      No values to display here
+    </div>
+  </div>
+</div>
+
+<p-dialog header="{{contato.codigo ? 'Editar Contato '+contato.nome : 'Novo Contato'}} " [(visible)]="showDialogContatos" *ngIf="contato">
+  <form #frmContato="ngForm" (ngSubmit)="saveContato(frmContato)">
+    <div class="ui-g-12 ui-fluid">
+      <label>Nome</label>
+
+      <input pInputText type="text" name="nomeContato"
+             required [(ngModel)]="contato.nome" #nomeContato="ngModel"/>
+
+      <p-message severity="error" text="Informe o nome"
+                 *ngIf="nomeContato.hasError('required') && nomeContato.dirty"></p-message>
+    </div>
+
+    <div class="ui-g-12 ui-fluid">
+      <label>E-mail</label>
+
+      <input pInputText type="email" name="emailContato"
+             required email [(ngModel)]="contato.email" #emailContato="ngModel"/>
+
+      <p-message severity="error" text="Informe o email"
+                 *ngIf="emailContato.hasError('required') && emailContato.dirty"></p-message>
+      <p-message severity="error" text="Informe um e-mail válido"
+                 *ngIf="emailContato.hasError('email') && emailContato.dirty"></p-message>
+
+    </div>
+
+    <div class="ui-g-12 ui-fluid">
+      <label>Telefone</label>
+
+      <p-inputMask name="telefone" [(ngModel)]="contato.telefone"
+                   mask="(99) 99999-999?9"></p-inputMask>
+    </div>
+
+    <div class="ui-g-12">
+      <button pButton type="submit" label="Confirmar" [disabled]="frmContato.invalid"></button>
+    </div>
+  </form>
+</p-dialog>

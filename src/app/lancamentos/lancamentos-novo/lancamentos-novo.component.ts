@@ -26,7 +26,7 @@ export class LancamentosNovoComponent implements OnInit {
               private router: Router,
               private title: Title,
               public authService: AuthService
-              ) {
+  ) {
   }
 
   tipos = [
@@ -37,6 +37,7 @@ export class LancamentosNovoComponent implements OnInit {
   categorias = [];
   pessoas = [];
   lancamento = new Lancamento();
+  isUploading = false;
 
 
   ngOnInit(): void {
@@ -126,5 +127,46 @@ export class LancamentosNovoComponent implements OnInit {
 
   atualizarTituloEdicao() {
     this.title.setTitle('Editar lançamento ' + this.lancamento.descricao);
+  }
+
+  onBeforeSendAnexo(event) {
+    event.xhr.setRequestHeader('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
+    this.isUploading = true;
+  }
+
+
+  onUploadAnexo(event) {
+    const anexo = JSON.parse(event.xhr.response);
+    this.lancamento.urlAnexo = anexo.url;
+    this.lancamento.anexo = anexo.nome;
+    this.isUploading = false;
+  }
+
+  onErrorAnexo(event) {
+    this.isUploading = false;
+    this.messageService.add({
+      severity: 'error',
+      summary: 'Erro ao enviar anexo.',
+      detail: 'Detalhes:' + JSON.parse(event.xhr.response).message
+    });
+  }
+
+  removerAnexo() {
+    this.lancamento.anexo = null;
+    this.lancamento.urlAnexo = null;
+  }
+
+  get nomeAnexo(): string {
+    const nome = this.lancamento.anexo;
+
+    if (nome) {
+      return nome.substring(nome.indexOf('_') + 1, nome.length);
+    }
+
+    return '';
+  }
+
+  get urlUploadAnexo(): string {
+    return this.lancamentoService.urlUploadAnexo();
   }
 }

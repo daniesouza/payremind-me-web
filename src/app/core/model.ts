@@ -13,6 +13,21 @@ export class Pessoa {
   nome: string;
   ativo = true;
   endereco = new Endereco();
+  contatos = [];
+}
+
+export class Contato {
+  codigo: number;
+  nome: string;
+  email: string;
+  telefone: string;
+
+  constructor(codigo?: number, nome?: string, email?: string, telefone?: string) {
+    this.codigo = codigo;
+    this.nome = nome;
+    this.email = email;
+    this.telefone = telefone;
+  }
 }
 
 
@@ -30,5 +45,6 @@ export class Lancamento {
   observacao: string;
   pessoa = new Pessoa();
   categoria = new Categoria();
-
+  anexo: string;
+  urlAnexo: string;
 }

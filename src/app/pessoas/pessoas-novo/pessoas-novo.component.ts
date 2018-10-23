@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl} from '@angular/forms';
-import {Lancamento, Pessoa} from '../../core/model';
+import {Contato, Lancamento, Pessoa} from '../../core/model';
 import {CategoriasService} from '../../categorias/categorias.service';
 import {PessoasService} from '../pessoas.service';
 import {LancamentoService} from '../../lancamentos/lancamento.service';
@@ -84,7 +84,6 @@ export class PessoasNovoComponent implements OnInit {
       .catch(error => this.errorHandler.handle(error));
   }
 
-
   novo(form: FormControl) {
     form.reset();
     this.pessoa = new Pessoa();
@@ -94,4 +93,5 @@ export class PessoasNovoComponent implements OnInit {
   atualizarTituloEdicao() {
     this.title.setTitle('Editar pessoa ' + this.pessoa.nome);
   }
+
 }

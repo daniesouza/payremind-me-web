@@ -16,11 +16,14 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {CurrencyMaskModule} from 'ng2-currency-mask';
 import {InputMaskModule} from 'primeng/inputmask';
 import {InputSwitchModule} from 'primeng/inputswitch';
+import {PanelModule} from 'primeng/panel';
+import {DialogModule} from 'primeng/dialog';
+
 
 import {PessoasPesquisaComponent} from './pessoas-pesquisa/pessoas-pesquisa.component';
 import {PessoasNovoComponent} from './pessoas-novo/pessoas-novo.component';
 import {PessoasRoutingModule} from './pessoas-routing.module';
-
+import {PessoaContatoComponent} from './pessoa-contato/pessoa-contato.component';
 
 
 @NgModule({
@@ -42,13 +45,16 @@ import {PessoasRoutingModule} from './pessoas-routing.module';
     MessageModule,
     MessagesModule,
     InputMaskModule,
-    InputSwitchModule
+    InputSwitchModule,
+    PanelModule,
+    DialogModule
   ],
   declarations: [
     PessoasPesquisaComponent,
     PessoasNovoComponent,
+    PessoaContatoComponent,
   ],
-  exports: [
-  ]
+  exports: []
 })
-export class PessoasModule { }
+export class PessoasModule {
+}

@@ -8,6 +8,8 @@ import {CoreModule} from './core/core.module';
 import {AppRoutingModule} from './app-routing.module';
 import {SegurancaModule} from './seguranca/seguranca.module';
 import {HttpClientModule} from '@angular/common/http';
+import {DashboardModule} from './dashboard/dashboard.module';
+import {RelatoriosModule} from './relatorios/relatorios.module';
 
 @NgModule({
   declarations: [
@@ -19,11 +21,13 @@ import {HttpClientModule} from '@angular/common/http';
     HttpClientModule,
     CoreModule,
     SegurancaModule,
+
     LancamentosModule,
     PessoasModule,
+    DashboardModule,
+    RelatoriosModule
   ],
-  providers: [
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {

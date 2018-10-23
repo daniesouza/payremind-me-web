@@ -90,4 +90,7 @@ export class LancamentoService {
       .then(() => null);
   }
 
+  urlUploadAnexo(): string {
+    return `${this.lancamentosUrl}/anexo`;
+  }
 }

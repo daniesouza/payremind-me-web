@@ -5,7 +5,7 @@
     <div class="ui-g">
 
       <div class="ui-g-12">
-        <h1>{{pessoa.codigo ? 'Editar pessoa '+pessoa.nome : 'Novo'}} Lançamento</h1>
+        <h1>{{pessoa.codigo ? 'Editar pessoa '+pessoa.nome : 'Nova Pessoa'}} Lançamento</h1>
       </div>
 
       <div class="ui-g-12 ui-md-12 ui-fluid">
@@ -80,8 +80,16 @@
       </div>
 
       <div class="ui-g-12">
-        <button pButton type="submit" label="Salvar"  [disabled]="!authService.temPermissao('ROLE_CADASTRAR_PESSOA')" ></button>
-        <button pButton type="button" label="Novo"  [disabled]="!authService.temPermissao('ROLE_CADASTRAR_PESSOA')"  class="ui-button-info"
+        <p-panel header="Contatos">
+          <app-pessoa-contato [contatos]="pessoa.contatos"></app-pessoa-contato>
+        </p-panel>
+      </div>
+
+      <div class="ui-g-12">
+        <button pButton type="submit" label="Salvar"
+                [disabled]="!authService.temPermissao('ROLE_CADASTRAR_PESSOA')"></button>
+        <button pButton type="button" label="Novo" [disabled]="!authService.temPermissao('ROLE_CADASTRAR_PESSOA')"
+                class="ui-button-info"
                 (click)="novo(form)"></button>
         <a routerLink="/pessoas">Voltar para a pesquisa</a>
       </div>

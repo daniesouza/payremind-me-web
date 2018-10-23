@@ -67,9 +67,32 @@
         <textarea pInputTextarea rows="3" name="observacao" [(ngModel)]="lancamento.observacao"></textarea>
       </div>
 
+      <div class="ui-g-6 ui-g-offset-6 ui-md-2 ui-md-offset-10 ui-fluid"
+           *ngIf="!lancamento.anexo">
+        <p-fileUpload name="anexo" mode="basic" auto="true" maxFileSize="100000000"
+                      chooseLabel="Anexar Arquivo" accept="image/*;application/*"
+                      [url]="urlUploadAnexo"
+                      (onBeforeSend)="onBeforeSendAnexo($event)"
+                      (onUpload)="onUploadAnexo($event)"
+                      (onError)="onErrorAnexo($event)"
+                      [hidden]="isUploading">
+        </p-fileUpload>
+        <p-progressSpinner  [hidden]="!isUploading" [style]="{ width: '25px',height: '25px' }"></p-progressSpinner>
+      </div>
+
+      <div class="ui-g-12" *ngIf="lancamento.anexo" dir="rtl">
+        <button pButton icon="pi pi-trash" pTooltip="Remover Anexo"
+                class="ui-button-danger"
+                (click)="removerAnexo()" type="button" tooltipPosition="top"></button>
+        <a target="_blank" pTooltip="Abrir Anexo" tooltipPosition="top"
+           [href]="lancamento.urlAnexo">{{nomeAnexo}}</a>
+      </div>
+
       <div class="ui-g-12">
-        <button pButton type="submit" label="Salvar" [disabled]="!authService.temPermissao('ROLE_CADASTRAR_LANCAMENTO')" [disabled]="form.invalid"></button>
-        <button pButton type="button" label="Novo" [disabled]="!authService.temPermissao('ROLE_CADASTRAR_LANCAMENTO')" class="ui-button-info"
+        <button pButton type="submit" label="Salvar" [disabled]="!authService.temPermissao('ROLE_CADASTRAR_LANCAMENTO')"
+                [disabled]="form.invalid || isUploading"></button>
+        <button pButton type="button" label="Novo" [disabled]="!authService.temPermissao('ROLE_CADASTRAR_LANCAMENTO')"
+                class="ui-button-info"
                 (click)="novo(form)"></button>
         <a routerLink="/lancamentos">Voltar para a pesquisa</a>
       </div>
