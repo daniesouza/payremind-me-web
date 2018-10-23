@@ -43,14 +43,12 @@ export class PessoasService {
       .toPromise()
       .then(response => {
 
-        const result = {
+        return {
           // @ts-ignore
           pessoas: response.content,
           // @ts-ignore
           totalRecords: response.totalElements
         };
-
-        return result;
       });
   }
 
