@@ -59,9 +59,10 @@
                 </td>
                 <td>
                   <button pButton [disabled]="!authService.temPermissao('ROLE_CADASTRAR_LANCAMENTO')"
-                          icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top" [routerLink]="['/lancamentos', lancamento.codigo]"></button>
+                          icon="pi pi-pencil" pTooltip="Editar" type="button" tooltipPosition="top"
+                          [routerLink]="['/lancamentos', lancamento.codigo]"></button>
                   <button pButton [disabled]="!authService.temPermissao('ROLE_REMOVER_LANCAMENTO')"
-                          icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top" (click)="excluir(lancamento)"></button>
+                          icon="pi pi-trash" pTooltip="Excluir" type="button" tooltipPosition="top" (click)="excluir(lancamento)"></button>
                 </td>
               </tr>
             </ng-template>

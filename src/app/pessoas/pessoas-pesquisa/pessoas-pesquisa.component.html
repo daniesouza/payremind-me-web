@@ -50,10 +50,12 @@
                 <td>
                   <button pButton
                           [disabled]="!authService.temPermissao('ROLE_CADASTRAR_PESSOA')"
+                          type="button"
                           icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"
                           [routerLink]="['/pessoas', pessoa.codigo]"></button>
                   <button
                           [disabled]="!authService.temPermissao('ROLE_REMOVER_PESSOA')"
+                          type="button"
                           pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top"
                           (click)="excluir(pessoa)"></button>
                 </td>
